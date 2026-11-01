@@ -20,7 +20,7 @@ Use my reviewed SPEC.md. Make sure the first commit contains only that file, wit
 
 
 **Prompt:**
-Read the latest SPEC.md from GitHub. Explain what we should build during Phase 1 and what we should leave for Sai. Don’t change any files yet.
+Read the latest SPEC.md from GitHub. Explain what we should build during Phase 1 and what we should leave. Don’t change any files yet.
 
 **Prompt:**
 Create the basic page using HTML, CSS, and JavaScript. Draw a 2D pool table with six pocket markers, one cue ball, three solids, three stripes, and the 8-ball. Show four pockets as open and two as blocked. Keep rendering separate from game state. Don’t implement shooting yet.
