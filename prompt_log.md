@@ -7,7 +7,7 @@ AI: Explained the spec-first commit, partial build, documentation, separate inhe
 
 
 **Prompt:**
-I want to make a small 2D pool game. Suggest a few manageable twists that would make it different from normal pool. Keep the scope suitable for about 45 minutes of starter coding and two hours for someone else to finish. I’ll choose the idea and rules.
+I want to make a small 2D pool game, only have 45 mins. Suggest a few manageable twists that would make it different from normal pool. Keep the scope suitable for about 45 minutes of starter coding and two hours for someone else to finish. I’ll choose the idea and rules.
 
 AI: Suggested pool twists. You chose Pocket Shuffle and reduced the table to three solids, three stripes, an 8-ball, and a cue ball.
 
