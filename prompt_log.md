@@ -1,40 +1,49 @@
 # Phase 1 prompt log
 
-## Tools and model
+**Prompt:**
+Read the assignment and explain the requirements and submission steps. Don’t create files or code yet.
 
-OpenAI Codex desktop assistant; exact underlying model/version was not exposed in this chat. Tools used: local shell/Git, file editing, JavaScript execution for physics checks, and browser automation for preview. Implementation uses vanilla HTML/CSS/JavaScript with no external game library or generated assets.
+AI: Explained the spec-first commit, partial build, documentation, separate inherited repository, preservation rule, and submission requirements.
 
-## Important prompts (verbatim, chronological)
 
-> what about 8 pool ball, but the twist can be like idk?
+**Prompt:**
+I want to make a small 2D pool game. Suggest a few manageable twists that would make it different from normal pool. Keep the scope suitable for about 45 minutes of starter coding and two hours for someone else to finish. I’ll choose the idea and rules.
 
-> yeah okay i like the pocket suffle, yeah keep it 2D, and yea for scope the 3 solids 3 stripes, and 8 ball is good.
+AI: Suggested pool twists. You chose Pocket Shuffle and reduced the table to three solids, three stripes, an 8-ball, and a cue ball.
 
-> yes the rules is its two players on same computer, shuffle evetying 2 shots, yes 4 open and 2 closed, yes for the wining, yes for the fouls. write the sepc.md for me (i asked the prof he says its okay cuz i missed class ) and im confused do i commit the spec to a repo or something?
+**Prompt:**
+Use these decisions: two players on one computer, four open pockets and two closed, and a new blocked-pocket pair every two shots after the balls stop. Players clear their assigned balls before sinking the 8-ball. A cue-ball foul ends the turn and lets the opponent reposition it. read my SPEC.md with checkable acceptance criteria and priorities. Flag any additional rules you suggest so I can review them. Don’t generate code.
 
-> can u do this all for me please. and do i send sai the repo when there is just the spec or like after some code and stuff.
 
-> undo this stuff, ill make the repo and stuff
+**Prompt:** 
+Use my reviewed SPEC.md. Make sure the first commit contains only that file, with no code. Connect the Desktop project to my GitHub repository and push it. Don’t begin implementation yet.
 
-> okay i move the spec to the desktop, so we can use vsc code as well. cretaed this:
-> [https://github.com/guptaveer00/pocket-shuffle-pool](https://github.com/guptaveer00/pocket-shuffle-pool)
->
-> do the first step of making the commit of the spec. thats the first step right?
 
-> okay do this for me, build out a bit
+**Prompt:**
+Read the latest SPEC.md from GitHub. Explain what we should build during Phase 1 and what we should leave for Sai. Don’t change any files yet.
 
-## What happened
+**Prompt:**
+Create the basic page using HTML, CSS, and JavaScript. Draw a 2D pool table with six pocket markers, one cue ball, three solids, three stripes, and the 8-ball. Show four pockets as open and two as blocked. Keep rendering separate from game state. Don’t implement shooting yet.
 
-The assistant suggested pool twists; Veer chose Pocket Shuffle and confirmed the core rules. The assistant drafted SPEC.md after Veer reported professor approval. The first commit contains SPEC.md only.
+**Prompt:**
+Add mouse aiming with a direction line. Hold the left mouse button to charge shot power and release to shoot. Show a capped power bar. Keep input handling separate from the game logic.
 
-On the earlier broad request, the assistant built a starter before Veer asked to undo that work and handle the repository setup himself. The starter commit/files were removed, preserving the spec-only first commit. Veer then created the GitHub repository and explicitly requested the spec commit be pushed. On the latest request to build a bit, the assistant restored that starter foundation and documented it. The final history should be read as the actual retained Phase 1 work, not the abandoned attempt.
+**Prompt:**
+Add friction, cushion rebounds, and ball-to-ball collisions in a separate physics file. Use simple, consistent physics. Prevent another shot while any ball is moving. Don’t add pocketing or player turns yet.
 
-Veer also edited SPEC.md on GitHub before implementation; those edits are preserved ahead of the code commits.
+**Prompt:**
+Add a reset button that restores the starting layout and shot count. Add clear TODOs where the student should implement pocketing, the shuffle, turns, fouls, and winning.
 
-The current code intentionally stops at aiming/shooting/basic physics. The assistant did not implement a finished game, and the README lists the missing pocket mechanics, shuffle, turns, fouls, and winning. Sai should use scoped requests and review diffs to preserve this foundation.
 
-## Documentation revision prompt (verbatim)
 
-> couple things, the switch of the holes being blocked isnt working, and the balls almost never go into the hole, and stuff but we can fix that. also can u rewrite the read me to be simpler, its too complex rn. and then after i send repo to sai, i have to finsih the game or wha
+**Prompt:**
+Check that the starter loads, aiming and charging work, balls collide and stop, shooting is blocked during motion, and reset works. Run focused physics checks. Report what you actually verified and any limitations; don’t claim unfinished features work.
 
-The README was simplified while keeping the run instructions, controls, criterion-by-criterion status, file map, next steps, and known limitations. No gameplay code changed. Pocketing and shuffle remain unfinished for the inheritor.
+
+**Prompt:**
+I am writing a simple README with run instructions, controls, the status of every acceptance criterion, a short file map, known limitations, and prioritized next steps. Clearly state that pockets are only drawings and neither pocketing nor shuffling works yet. 
+
+
+**Prompt:**
+Help me simplify the README so another student can understand it quickly, while keeping the required information. Don’t change gameplay. Commit and push the documentation, then explain how one should receive the project. After I send it, leave the repository unchanged.
+
