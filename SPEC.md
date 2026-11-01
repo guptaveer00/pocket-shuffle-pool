@@ -43,20 +43,29 @@ Controls and shot flow
 - A HUD showing the current player, group assignments, remaining balls, shots until the next shuffle, and relevant messages.
 - Clear visual differences between solids, stripes, the cue ball, the 8-ball, and open/closed pockets.
 
- Acceptance criteria
+## Acceptance criteria
 
-- The game launches using the README instructions and displays a playable 2D table with six pockets, one cue ball, three solids, three stripes, and one 8-ball.
-- The mouse controls aim, and a visible line indicates the cue ball's initial shot direction.
-- Holding and releasing the left mouse button charges and takes a shot, with a visible capped power meter; longer holds produce stronger shots up to the cap.
-- Balls move after a shot, rebound from cushions, collide with other balls, and gradually stop through friction. Simplified physics are acceptable if normal shots behave consistently.
-- The player cannot take another shot or reposition the cue ball while any ball is moving.
-- Exactly four pockets are open and two are closed. Balls entering open pockets are removed; balls hitting closed pockets rebound and remain in play.
-- After every two completed shots, including fouls, the closed-pocket pair changes only after all balls stop. The new pair differs from the previous pair, and exactly four pockets remain open.
-- Player 1 is assigned solids and Player 2 stripes. The current player and assignments are visible.
-- A player continues after pocketing their own ball without fouling; otherwise the turn passes. Opponent balls pocketed on the shot remain removed and update the opponent's remaining count.
-- Pocketing the cue ball ends the turn and allows the opponent to place it. Invalid placements outside the playing area, overlapping balls, or overlapping pockets are rejected.
-- Pocketing the 8-ball wins only if the shooter had cleared their assigned balls before that shot and did not pocket the cue ball. An early 8-ball or an 8-ball pocketed with the cue ball awards the win to the opponent.
-- The game displays the winner and prevents further shots after the game ends.
-- The HUD accurately shows each player's remaining balls and the number of shots until the next shuffle, and announces a shuffle or foul.
-- Restart resets the balls, assignments, current player, shot counter, pocket layout, and game result to a fresh playable game.
-- Ball groups and pocket states are distinguishable using markings as well as color, such as stripes and a closed-pocket cover.
+1. The game launches using the README instructions and displays a playable 2D table with six pockets, one cue ball, three solids, three stripes, and one 8-ball.
+2. The mouse controls aim, and a visible line indicates the cue ball's initial shot direction.
+3. Holding and releasing the left mouse button charges and takes a shot, with a visible capped power meter; longer holds produce stronger shots up to the cap.
+4. Balls move after a shot, rebound from cushions, collide with other balls, and gradually stop through friction. Simplified physics are acceptable if normal shots behave consistently.
+5. The player cannot take another shot or reposition the cue ball while any ball is moving.
+6. Exactly four pockets are open and two are closed. Balls entering open pockets are removed; balls hitting closed pockets rebound and remain in play.
+7. After every two completed shots, including fouls, the closed-pocket pair changes only after all balls stop. The new pair differs from the previous pair, and exactly four pockets remain open.
+8. Player 1 is assigned solids and Player 2 stripes. The current player and assignments are visible.
+9. A player continues after pocketing their own ball without fouling; otherwise the turn passes. Opponent balls pocketed on the shot remain removed and update the opponent's remaining count.
+10. Pocketing the cue ball ends the turn and allows the opponent to place it. Invalid placements outside the playing area, overlapping balls, or overlapping pockets are rejected.
+11. Pocketing the 8-ball wins only if the shooter had cleared their assigned balls before that shot and did not pocket the cue ball. An early 8-ball or an 8-ball pocketed with the cue ball awards the win to the opponent.
+12. The game displays the winner and prevents further shots after the game ends.
+13. The HUD accurately shows each player's remaining balls and the number of shots until the next shuffle, and announces a shuffle or foul.
+14. Restart resets the balls, assignments, current player, shot counter, pocket layout, and game result to a fresh playable game.
+15. Ball groups and pocket states are distinguishable using markings as well as color, such as stripes and a closed-pocket cover.
+
+## Priorities
+
+1. **First: make shooting work (criteria 1–5).** Show the table and balls, let players aim and shoot, and make balls bounce and stop.
+2. **Next: add the pocket twist (criteria 6–7).** Balls must enter open pockets, bounce off closed pockets, and the blocked pair must change every two shots.
+3. **Then: finish the match rules (criteria 8–12 and 14).** Add player turns, fouls, winning and losing, and restart.
+4. **Last: improve the display (criteria 13 and 15).** Make the scores, messages, ball groups, and pocket states easy to understand.
+
+If time runs short, skip extra graphics, animations, and sound first. Focus on a playable match with the pocket shuffle. Clearly list anything unfinished in the README.
