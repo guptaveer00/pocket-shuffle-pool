@@ -1,67 +1,71 @@
-# Pocket Shuffle Pool — Phase 1
+# Pocket Shuffle Pool
 
-Designed by **Veer Gupta**. Phase 1 foundation built with Codex assistance; Sai will extend this project in Phase 2.
+Designed by Veer Gupta, with AI assistance for the Phase 1 starter.
 
-## Run
+This is a 2D pool game for two players on the same computer. The planned twist is that two of the six pockets are blocked, and the blocked pockets change every two shots. See SPEC.md for the full rules.
 
-No dependencies or build step. Download/extract or clone the repository, then open `index.html` in a current desktop Chrome, Firefox, Safari, or Edge browser. Keep the `js/` folder and `style.css` beside it. Alternatively, run `python3 -m http.server 8000` in this folder and visit http://localhost:8000.
+## How to run
 
-## Play the foundation
+Download and unzip the whole project, then open `index.html` in a desktop browser. No installation is needed. Keep the other files and the `js` folder with it.
 
-Move the mouse over the table to aim. Hold the left mouse button to charge (maximum power at 1.2 seconds), then release to shoot toward the pointer. Wait for all balls to stop before the next shot. Reset table restores the starting layout. Desktop mouse controls are the target; touch controls are not tested.
+## Controls
 
-This is a physics sandbox, not a completed match. Pockets are visual markers only: all edges currently rebound balls, including the open-looking pockets. No balls can be pocketed yet, and there are no player turns, fouls, winner, or pocket shuffle.
+- Move the mouse to aim.
+- Hold the left mouse button to charge power, then release to shoot.
+- Wait for the balls to stop before shooting again.
+- Click **Reset table** to start over.
 
-## Acceptance criteria at handoff
+## What works so far
 
-Numbers below follow the order of the acceptance-criteria bullets in SPEC.md.
+The table, eight balls, aiming line, power bar, shooting, ball collisions, wall bounces, friction, and reset work.
 
-1. **Partially met:** table and all eight balls load and shots work; a complete pool match is not playable yet.
-2. **Met:** mouse aims with an initial-direction line.
-3. **Met:** holding/releasing charges/shoots; the visible meter caps at 1.2 seconds.
-4. **Met:** fixed-step circle physics includes cushion rebounds, collisions, and friction; simplified rather than realistic.
-5. **Met:** another shot is blocked while balls move; repositioning is not implemented.
-6. **Partially met:** four open and two covered pocket markers render; actual pocket removal is missing and all boundaries rebound.
-7. **Not met:** completed shots are counted, but pockets do not shuffle.
-8. **Not met:** no active player or assignment state/HUD yet.
-9. **Not met:** no pocket events or turn resolution yet.
-10. **Not met:** no scratches or cue-ball placement yet.
-11. **Not met:** no 8-ball eligibility or win/loss rules yet.
-12. **Not met:** no game-over state or winner display yet.
-13. **Partially met:** motion/charging status and completed-shot count display; player progress, shuffle countdown, and foul messages are missing.
-14. **Partially met:** reset restores existing ball/pocket layout and shot count; future match state must also reset.
-15. **Met:** stripes and number labels distinguish balls; crossed covers distinguish closed-pocket markers from open ones.
+**Pockets do not work yet.** They are only drawings right now, so balls bounce off the edge even at an open pocket. The blocked pockets also do not change yet. Turns, fouls, and winning still need to be added.
 
-## Code map
+## Spec checklist
 
-- `index.html`: page structure; scripts load in dependency order.
-- `style.css`: responsive page and table styling.
-- `js/physics.js`: `PoolPhysics.bounds`, ball radius, movement check, and `step(balls, dt)` for cushions, equal-mass collisions, and friction.
-- `js/game.js`: `create()` returns fresh balls/pockets/shot state, `shoot()` guards and applies velocity, `update()` advances physics and detects the end of a shot. Add turn resolution here.
-- `js/render.js`: draws table, pocket markers, cue/aiming line, and balls. Ignores balls flagged `pocketed`.
-- `js/main.js`: pointer input/capture, charging, reset, status display, animation loop with 1/240-second physics steps.
+These numbers follow the order of the acceptance criteria in SPEC.md.
 
-These scripts expose `window.PoolPhysics`, `window.PoolGame`, and `window.PoolRender` to avoid a module server/build dependency. Preserve script order.
+1. **Partial:** table and eight balls work; a full match is unfinished.
+2. **Done:** mouse aiming and direction line.
+3. **Done:** hold/release shooting with a capped power bar.
+4. **Done:** movement, collisions, wall bounces, and slowing to a stop.
+5. **Done:** shooting is blocked while balls move. Ball placement is not available yet.
+6. **Partial:** four open and two closed pockets are drawn, but balls cannot enter them.
+7. **Not done:** pocket shuffle every two shots.
+8. **Not done:** player assignments and current-player display.
+9. **Not done:** turns and keeping your turn after scoring.
+10. **Not done:** cue-ball fouls and placement.
+11. **Not done:** 8-ball win/loss rules.
+12. **Not done:** winner display and stopping the game afterward.
+13. **Partial:** shot count and movement status display; player progress and shuffle/foul messages are missing.
+14. **Partial:** reset clears the current starter; match rules will also need to reset once added.
+15. **Done:** stripes, numbers, and pocket covers distinguish the ball and pocket types.
 
-## Sai's next steps, in priority order
+## Where the code is
 
-1. Read SPEC.md and run this foundation before changing it. Commit the unchanged received project as the first commit in your own NEW repository.
-2. Add pocket detection BEFORE cushion response in `physics.js`. Record pocketed ball IDs for the current shot; use the existing `pocketed` flag. Closed pockets should retain their rebound behavior.
-3. In `game.js`, change the closed pair after every second completed shot, only after motion stops. Choose a different pair, keeping exactly two closed.
-4. Add current-player/group state, remaining-ball counts, and shot resolution. Capture 8-ball eligibility at the START of a shot; resolve scratches and early/simultaneous cue-and-8 losses before offering another shot.
-5. Add valid cue-ball placement after scratches, winner display/input blocking, and full reset. Extend the renderer/HUD to show the new state.
-6. Test complete matches and update each acceptance-criterion status honestly. Keep a Phase 2 prompt log and personally write HANDOFF_REPORT.md without AI.
+- `index.html`: page and game canvas.
+- `style.css`: appearance and layout.
+- `js/physics.js`: ball movement, collisions, slowing, and wall bounces.
+- `js/game.js`: starting layout, shooting, and counting completed shots. Add match rules here.
+- `js/render.js`: draws the table, pockets, balls, and aiming line.
+- `js/main.js`: mouse controls, power bar, reset button, and game loop.
 
-## Known limitations and shortcuts
+Keep the scripts in their current order in `index.html`; later scripts use earlier ones.
 
-- Pocket artwork sits on continuous rectangular cushions. Opening a pocket visually does not make a physical opening; implementing this is the first major missing feature.
-- Circle collisions have no spin or angular momentum. Small fixed steps reduce tunneling, but crowded wall-contact cases may still overlap/jitter briefly; edge handling precedes pair separation.
-- The starting rack is a compact seven-ball layout, not a regulation rack.
-- Minimum shot power is nonzero; even a short click shoots. Moving the pointer while charging changes the release direction.
-- Switching tabs or cancelling a pointer cancels charging. A paused tab's physics advances at most 0.05 seconds on return.
-- Game logic and rendering are deliberately separate. The `pocketed` field and end-of-shot TODOs are extension points, not completed rules.
-- No third-party dependencies, audio, assets, AI opponent, or advanced pool rules. This leaves time for the central mechanic and playable rules in Phase 2.
+## What to build next
 
-## Verification
+1. Make open pockets remove balls. Check for pocket entry before wall bounces in `physics.js`; otherwise the wall pushes balls away first.
+2. Switch the two blocked pockets every two completed shots, after all balls stop. The new pair must differ from the old pair.
+3. Add player turns, assigned groups, and remaining-ball counts.
+4. Add cue-ball fouls and valid placement, then 8-ball winning/losing and a game-over screen. Check whether a player was eligible for the 8-ball before the shot starts.
+5. Update reset and the on-screen information for the new rules.
 
-JavaScript syntax and headless physics checks cover initial counts, shooting lockout, shot settling/counting, velocity transfer, and cushion rebound. Browser preview loaded successfully and a held click produced ball movement; reset was checked in the browser, and shot completion was checked in the headless simulation. Full match/pocket/shuffle behavior cannot be verified because those features are not implemented.
+## Bugs and shortcuts
+
+Physics is simplified: no spin or advanced pool rules. Balls may briefly overlap or jitter when crowded near a wall. Even a quick click shoots with a little power. Moving the mouse while charging changes your aim.
+
+Simple drawings and separate files were used to keep the starter small and easy to continue. The balls already have a `pocketed` field, and there are TODO comments where pocketing and shot-end rules should go.
+
+## Checks performed
+
+The game loaded in a browser, shooting moved the balls, and reset worked. JavaScript and physics checks passed for collisions, wall bounces, stopping, and counting a shot once. The unfinished match rules have not been tested.

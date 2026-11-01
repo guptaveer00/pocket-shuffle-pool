@@ -32,3 +32,9 @@ On the earlier broad request, the assistant built a starter before Veer asked to
 Veer also edited SPEC.md on GitHub before implementation; those edits are preserved ahead of the code commits.
 
 The current code intentionally stops at aiming/shooting/basic physics. The assistant did not implement a finished game, and the README lists the missing pocket mechanics, shuffle, turns, fouls, and winning. Sai should use scoped requests and review diffs to preserve this foundation.
+
+## Documentation revision prompt (verbatim)
+
+> couple things, the switch of the holes being blocked isnt working, and the balls almost never go into the hole, and stuff but we can fix that. also can u rewrite the read me to be simpler, its too complex rn. and then after i send repo to sai, i have to finsih the game or wha
+
+The README was simplified while keeping the run instructions, controls, criterion-by-criterion status, file map, next steps, and known limitations. No gameplay code changed. Pocketing and shuffle remain unfinished for the inheritor.
